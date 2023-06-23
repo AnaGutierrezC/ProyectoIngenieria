@@ -49,9 +49,8 @@ class TicketsController extends Controller
             $ticket->etiqueta = $request->input('etiqueta');
             $ticket->agente = $request->input('etiqueta');
             $ticket->save();
-            console.log("GUARDADO");
-            $lista_tickets = tm_ticket::all();
-            return view('ticketeria.confirmacion', ['listaTickets' => $lista_tickets]);
+
+            return view('ticketeria.confirmacion');
          
             
     }
