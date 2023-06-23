@@ -16,7 +16,7 @@
       </a>
   </div>
   <div class="registro-actividad">
-        <h2>Registro de Actividad</h2>
+        <h2>Registro de Actividad (Logs)</h2>
    </div>
   <div class="roles">
         <a href="/usuarios/listaroles"><h2>Roles</h2></a>
