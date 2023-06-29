@@ -2,13 +2,64 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\prioridad;
 use Illuminate\Http\Request;
-use App\Models\tm_prioridad;
-use Illuminate\Support\Facades\DB;
+
 class PrioridadController extends Controller
 {
-    public function index(){
-        $prioridades = tm_prioridad::all();
-        return view('prioridades.index',['lista' => $prioridades]);
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(prioridad $prioridad)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(prioridad $prioridad)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, prioridad $prioridad)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(prioridad $prioridad)
+    {
+        //
     }
 }
