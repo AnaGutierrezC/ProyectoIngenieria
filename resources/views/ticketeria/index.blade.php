@@ -1,162 +1,110 @@
 @extends('layout/dashboard-template')
-@section('title','Tickets')
+@section('title','Lista de Tickets')
 @section('content')
-<div class="content flex margin-content">
+<div class="content margin-content">
+  <div class="title flex">
+    <h2 id="title-tickets">Lista de Tickets</h2>
 
-                <input type="text" placeholder="Search..." class="search-input">
-                <button class="search-btn">
-                    <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
-                        aria-labelledby="search">
-                        <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
-                            stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                    </svg>
-                </button>
+    <button class="create-btn"> <a href="{{url('ticketeria/create')}}">Crear Ticket</a>
+    </button>
 
-  
-        <div class="usuarios-registrados">
-                <a href="{{('ticketeria/create')}}"><h2>Crear ticket</h2> </a>
-        </div>
-        <div class="roles">
-                <a href="/prioridades"><h2>Prioridades</h2></a>
-        </div>
-        <div class="registro-actividad">
-               <a href="/etiquetas"> <h2>Etiquetas</h2></a>
-        </div>
-        <div class="tickets">
-            <a href="/categorias"><h2>Categorías</h2></a>
-        </div>
-  <table>
-        <thead>
-              <th>Título</th>
-              <th>Descripción</th>
-              <th>Agente</th>
-              <th>Estado</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-        </thead>
-        <tbody>
-            @foreach($listaTickets AS $item)
-              <tr>
-                <td>{{$item->titulo}}</td>
-                <td>{{$item->descripcion}}</td>
-                <td>{{$item->agente}}</td>
-                <td>{{$item->estado}}</td>
-                <td><button class="comment-btn">Comentar</button></td>
-                <td><button class="detail-btn">Detalles</button></td>
-                <td><button class="edit-btn">Editar</button></td>
-                <td><button class="delete-btn">Eliminar</button></td>
-              </tr>
-              @endforeach
-        </tbody>
-      </table>
+  </div>
+
+  @foreach($listaTickets AS $item)
+  <div class="div-ticket">
+    <h3>{{$item->ticket}}</h3>
+    <p> {{$item->subject}} </p>
+    <p> Ticket #{{$item->id}} - Fecha de creación {{$item->created_at}} <span> {{$item->estado_id}}</span></p>
+    <div class="btn-ticket flex">
+      <a href="{{url('ticketeria/'.$item->id.'/asign')}}"><button class="asign-btn">Asignar</button></a>
+      <button class="comment-btn">Comentar</button>
+      <a href="{{url('ticketeria/'.$item->id.'')}}"><button class="detail-btn"> Detalles</button></a>
+      <a href="{{url('ticketeria/'.$item->id.'/edit')}}"><button class="edit-btn">Editar</button></a>
+      <form action="{{url('ticketeria/'.$item->id.'')}}" method="post">
+        @method('delete')
+        @csrf
+        <button class="delete-btn" type="submit">Eliminar</button>
+      </form>
+    </div>
+  </div>
+  @endforeach
+
 </div>
-<style> 
-  .content div {
-    /* display:flex; */
-    /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125), -2px -2px 4px rgba(0, 0, 0, 0.125); */
-    margin: 50px 10px;
-    width: 23%;
-    height:10%;
-    padding: 20px;
-    border-radius: 10px;
+<style>
+  .title {
+    margin: 2% 1%;
   }
 
-  .usuarios-registrados{
+  .div-ticket {
     margin-left: 20px;
-    background-color:#c19a6b;
-  }
-
-  .tickets{
-    background-color: #bcb88a;
-  }
-
-  .registro-actividad{
-    background-color:#b2beb5;
-  }
-  
-  .roles{
-    background-color: #fdcac4;
-  }
-  table {
-    width: 100%;
-    max-width: 1250px;
-    margin: auto auto;
-    border: 1px solid #60615d;
-    border-collapse: collapse;
-    border-radius: 3px;
-    border-style: hidden;
-    /* hide standard table (collapsed) border */
-    box-shadow: 0 0 0 2px #666;
-    /* this draws the table border */
-    table-layout: fixed;
-  }
-
-  thead {
-    text-align: center;
-    background-color: #adc798;
-    border-radius: 20px;
-    border-bottom: solid 1px black;
-  }
-  #rol-column {
-    text-align:center;
-  }
-
-  thead th {
-    padding: 10px;
-  }
-
-  td {
-    padding: 20px;
-    text-align: left;
-    border-bottom: 1px solid black;
-  }
-  button{
-    padding: 10px;
+    background-color: white;
+    width: 97%;
     border-radius: 10px;
-    width: 110px;
-    height: 50%;
   }
-  .comment-btn:hover{
+
+  .div-ticket div {
+    margin: 30px;
+  }
+
+  .div-ticket p {
+    margin-top: 5px;
+    margin-left: 20px;
+  }
+
+  .create-btn {
+    background-color: #ecf0f2;
+    width: 150px;
+    height: 40px;
+    padding: 10px;
+    margin-left: 860px;
+    transform: translate(-10px, 5px);
+    font-weight: bold;
+  }
+
+  .div-ticket button {
+
+    padding: 5px;
+    border-radius: 10px;
+    width: 200px;
+    height: 30px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+  }
+
+  #title-tickets {
+    margin-left: 20px;
+    margin-bottom: 40px;
+    margin-top: 80px;
+    color: #505458;
+  }
+
+  .comment-btn:hover {
     background-color: #ea9df2;
     color: white;
-    font-weight:bold;
+    font-weight: bold;
   }
-  .detail-btn:hover{
+
+  .asign-btn:hover {
+    background-color: #c19a6b;
+    color: white;
+    font-weight: bold;
+  }
+
+  .detail-btn:hover {
     background-color: #3FBF7F;
     color: white;
-    font-weight:bold;
+    font-weight: bold;
   }
-  .edit-btn:hover{
+
+  .edit-btn:hover {
     background-color: #54ADB4;
     color: white;
-    font-weight:bold;
+    font-weight: bold;
   }
-  .delete-btn:hover{
+
+  .delete-btn:hover {
     background-color: #FA5050;
     color: white;
-    font-weight:bold;
+    font-weight: bold;
   }
- .search-input {
-    margin: 0 auto;
-    width: 1100px;
-    font-size: 1.3rem;
-    padding-inline: 0.5em;
-    border-top: none;
-    outline: none;
-    border-radius: 10px;
-    padding: 10px;
-  }
- ::placeholder {
-    color:#60615d;
- }
- .search-btn{
-    transform: translate(-150px,5px) ;
-    background-color:white;
-    border: none;
-    text-align:right;
- }
-
 </style>
