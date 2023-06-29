@@ -6,17 +6,17 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RolSeeder extends Seeder
+class EstadoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $roles = ['Administrador','Agente','Usuario'];
-        foreach($roles as $rol){
-            DB::table('roles')->insert([
-                'nombre'=> $rol
+        $prioridades = ['En cola','En curso','Finalizado'];
+        foreach($prioridades as $priority){
+            DB::table('estados')->insert([
+                'nombre'=> $priority
             ]);
         }
     }
