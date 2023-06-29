@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\dashboard;
+use App\Models\Administrador;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class AdministradorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class DashboardController extends Controller
     {
         return view('dashboard.index');
     }
-
+  
     /**
      * Show the form for creating a new resource.
      */
@@ -34,7 +34,7 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(dashboard $dashboard)
+    public function show(Administrador $administrador)
     {
         //
     }
@@ -42,7 +42,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(dashboard $dashboard)
+    public function edit(Administrador $administrador)
     {
         //
     }
@@ -50,7 +50,7 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, dashboard $dashboard)
+    public function update(Request $request, Administrador $administrador)
     {
         //
     }
@@ -58,7 +58,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(dashboard $dashboard)
+    public function destroy(Administrador $administrador)
     {
         //
     }

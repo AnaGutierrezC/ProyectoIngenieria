@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\dashboard;
+use App\Models\Rol;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class RolController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('dashboard.index');
+        //
     }
 
     /**
@@ -34,7 +34,7 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(dashboard $dashboard)
+    public function show(Rol $rol)
     {
         //
     }
@@ -42,7 +42,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(dashboard $dashboard)
+    public function edit(Rol $rol)
     {
         //
     }
@@ -50,7 +50,7 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, dashboard $dashboard)
+    public function update(Request $request, Rol $rol)
     {
         //
     }
@@ -58,7 +58,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(dashboard $dashboard)
+    public function destroy(Rol $rol)
     {
         //
     }

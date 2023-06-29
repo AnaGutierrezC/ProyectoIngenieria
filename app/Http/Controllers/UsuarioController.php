@@ -2,77 +2,96 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\tm_usuario;
-use App\Models\tm_rolusuario;
 use Illuminate\Support\Facades\DB;
-
 
 
 class UsuarioController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $lista_usuarios = tm_usuario::all();
-        return view('usuarios.index', ['listaUsuarios' => $lista_usuarios]);
+        $usuarios = User::all();
+        return view('usuarios.index', ['listaUsuarios' => $usuarios]);
     }
-    public function registrar(){
 
-        $roles = tm_rolusuario::all();
-        return view('usuarios.registro', ['lista' => $roles]);
-    }
-    public function iniciarSesion()
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        return view('usuarios.iniciosesion');
+        return view('usuarios.registro');
+    }
 
-    }
-    public function recuperarContraseña()
-    {
-        return view('usuarios.recuperarpassword');
-    }
-    public function obtenerTodosLosAgentes()
-    {
-        return tm_usuario::where("rol", "Agente")->get();
-        // ->first();  -> para tener al primero que coincida con esa búsqueda
-    }
-    public function obtenerTodosLosAdministradores()
-    {
-        return tm_usuario::where("rol", "Administrador")->get();
-    }
-    public function obtenerTodosLosUsauriosHabituales()
-    {
-        return tm_usuario::where("rol", "Usuario")->get();
-    }
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-    $request->validate([
-        'nombre'=>'required|max:40',
-        'correo'=>'required|max:50',
-        'password'=>'required|max:50',
-        'rol'=>'required|max:15'
-    ]);
-    
-    $user = new tm_usuario;
-    $user->nombre = $request->input('nombre');
-    $user->correo = $request->input('correo');
-    $user->password = $request->input('password');
-    $user->rol = $request->input('rol');
-    $user->save();
-    return view('usuarios.index');
+        $usuarios = new User();
+
+        $usuarios->name = $request->input('nombre');
+        $usuarios->email_id = $request->input('correo');
+        $usuarios->cedula = $request->input('cedula');
+        $usuarios->password = $request->input('password');
+        $usuarios->telefono = $request->input('telefono');
+        $usuarios->genero = $request->input('genero');
+        $usuarios->rol_id = 3;
+        $usuarios->save();
+
+        // $usu = User::all();
+        return view('page');
     }
-    public function editarEllUsuario(){
-        $nombre = tm_usuario::where("usu_id","17")->get();
-        
-        return view('usuarios.edit', ['lista' => $nombre]);
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($id)
+    {
+        $usuario = User::find($id);
+        return view('usuarios.detail', ['user' => $usuario]);
     }
-    public function obtenerTodosLosRoles(){
-        $admin = tm_usuario::where("rol", "Administrador")->get();
-        $agente = tm_usuario::where("rol", "Agente")->get();
-        $usuario = tm_usuario::where("rol", "Usuario")->get();
-        return view('usuarios.listaroles', ['listaA' => $admin,'listaG' => $agente,'listaU' => $usuario]);
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        $usuario = User::find($id);
+        return view('usuarios.edit', ['usuario' => $usuario]);
     }
-    public function detallesDelUsuario(){
-        $nombre = tm_usuario::where("usu_id","17")->get();
-        return view('usuarios.detail', ['lista' => $nombre]);
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        $usuarios = User::find($id);
+
+        $usuarios->name = $request->input('nombre');
+        $usuarios->email_id = $request->input('correo');
+        $usuarios->cedula = $request->input('cedula');
+        $usuarios->password = $request->input('password');
+        $usuarios->telefono = $request->input('telefono');
+        $usuarios->genero = $request->input('genero');
+        $usuarios->rol_id = 1;
+        $usuarios->save();
+
+        $usu = User::all();
+        return view('usuarios.index', ['listaUsuarios' => $usu]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        $usuario = User::find($id);
+        $usuario->delete();
+        $usuarios = User::all();
+        return view('usuarios.index', ['listaUsuarios' => $usuarios]);
     }
 }
