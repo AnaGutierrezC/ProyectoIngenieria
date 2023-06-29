@@ -14,7 +14,7 @@
   <div class="div-ticket">
     <h3>{{$item->ticket}}</h3>
     <p> {{$item->subject}} </p>
-    <p> Ticket #{{$item->id}} - Fecha de creación {{$item->created_at}} <span> {{$item->estado_id}}</span></p>
+    <p> Ticket #{{$item->id}} - Fecha de creación {{$item->created_at}} <span> Open </span></p>
     <div class="btn-ticket flex">
       <a href="{{url('ticketeria/'.$item->id.'/asign')}}"><button class="asign-btn">Asignar</button></a>
       <button class="comment-btn">Comentar</button>
@@ -49,6 +49,10 @@
   .div-ticket p {
     margin-top: 5px;
     margin-left: 20px;
+  }
+
+  p span {
+    color: #FA5050;
   }
 
   .create-btn {

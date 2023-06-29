@@ -5,10 +5,10 @@
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script> -->
 
 <div class="content margin-content">
-    <h1>
+<h2 id="title-tickets">
     Editar ticket
         <a href="/ticketeria"><button class="salir">Salir</button></a>
-    </h1>
+    </h2>
     <form action="{{url('ticketeria/'.$ticket->id.'')}}" method="post">
         @method("PUT")
         @csrf
@@ -54,6 +54,12 @@
     </form>
 </div>
 <style>
+     #title-tickets {
+        margin-bottom: 10px;
+        margin-left:10px;
+        margin-top: 10px;
+        color: #505458;
+    }
     form {
         margin-top: 10px;
         justify-content: space-around;

@@ -23,6 +23,6 @@ class User extends Model
       'updted_at',
     ];
     public function roles(){
-        return $this->belongsTo('app\Models\Rol','rol_id','roles');
+        return $this->belongsTo('app\Models\Rol','rol_id','id');
     }
 }
