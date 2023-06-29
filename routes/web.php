@@ -1,14 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MysqlController;
-use App\Http\Controllers\UsuController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\TicketsController;
-use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\EtiquetaController;
-use App\Http\Controllers\PrioridadController;
-
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\AdministradorController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,19 +20,21 @@ use App\Http\Controllers\PrioridadController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('page');
 });
+ 
+Route::resource('/usuarios',UsuarioController::class);
 
-Route::get('/usuarios/registro',[UsuController::class, 'create']);
-Route::resource('/usuarios',UsuController::class);
+Route::resource('/ticketeria',TicketController::class);
+Route::get('/ticketeria/{id}/asign', [App\Http\Controllers\TicketController::class, 'asign']);
 
-Route::resource('/ticketeria',TicketsController::class);
-Route::get('/ticketeria/crear',[TicketsController::class, 'create']);
-Route::get('/ticketeria/confirmacion',[TicketsController::class, 'store']);
+Route::resource('/etiquetas',EtiquetaController::class);
 
-Route::get('/categorias',[CategoriaController::class, 'index']);
+Route::resource('/categorias',CategoriaController::class);
+
+Route::resource('/administradores',AdministradorController::class);
+
+Route::resource('/dashboard',DashboardController::class);
 
 
-Route::get('/etiquetas',[EtiquetaController::class, 'index']);
-
-Route::get('/prioridades',[PrioridadController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
