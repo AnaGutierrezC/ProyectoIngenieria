@@ -1,32 +1,41 @@
 @extends('layout/dashboard-template')
-@section('title','Editar usuario')
+@section('title','Editar Perfil')
 @section('content')
 
 <div class="content margin-content">
-    <h1>EDITAR USUARIO</h1>
+    <h1 id="title-tickets">Información de {{$usuario->name}}</h1>
 
     <form action="{{url('usuarios/'.$usuario->id.'')}}" method="post">
         @method("PUT")
         @csrf
     <div>
-        <label for="">Nombre:</label>
-        <input type="text" placeholder="Nombre" name="nombre" id="nombre"value="{{$usuario->name}}"required>
+        <label for="">Nombre Completo</label>
     </div>
     <div>
-        <label for="">Correo electrónico:</label>
-        <input type="email" name="correo" id="correo"  value="{{$usuario->email_id}}"required>
+    <input type="text" placeholder="Nombre" name="nombre" id="nombre"value="{{$usuario->name}}"required>
     </div>
     <div>
-        
-        <label for="">Cedula:</label>
-        <input type="text" name="cedula" id="cedula"  value="{{$usuario->cedula}}"required disabled>
+        <label for="">Correo Electrónico</label>        
     </div>
     <div>
-        <label for="">Telefono:</label>
+    <input type="email" name="correo" id="correo"  value="{{$usuario->email_id}}"required>
+    </div>
+    <div>
+        <label for="">Cedula de Identidad</label>
+    </div>
+    <div>
+    <input type="text" name="cedula" id="cedula"  value="{{$usuario->cedula}}"required>
+    </div>
+    <div>
+    <label for="">Teléfono</label>
+    </div>
+    <div>
         <input type="text" name="telefono" id="telefono" value="{{$usuario->telefono}}"required>
     </div>
     <div>
     <label for="">Género:</label>
+    </div>
+    <div>
         <select name="genero" id="genero" value ="genero"required>
                     <option value="Otro"> Otro </option>
                     <option value="Femenino"> Femenino</option>
@@ -35,35 +44,43 @@
         </select>
     </div>
     <div>
-        <button type="submit"> Editar</button>
+        <button type="submit" class="edit-btn"> Guardar cambios</button>
     </div>
 </form>
 
 <style>
+     #title-tickets {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: #505458;
+    }
     body{
-        text-align:center;
+        text-align:left;
     }
     form{
-        margin-top: 10%;
-        margin-left: 35%;
-        text-align: center;        
-        justify-content: space-around;
-        border: 1px solid black;
+        text-align: left;        
         width: 30%;
         height: 45%;
     }
     form div{
         padding: 10px;
         margin: 10px;
-        text-align: right;
     }
-   .links{
-        margin-left: 35%;
-        width: 30%;
-        text-align: left;
+    form input,select{
+        width: 700px;
+        height: 40px;
+        font-size: medium;
+        padding-left: 10px;
+        border:none;
     }
-   .links a{
-        text-decoration:none;
-        color: black;
+    button{
+        margin-left: 50%;
+        padding: 10px;
+        border-radius: 10px;
     }
+    .edit-btn:hover {
+    background-color: #54ADB4;
+    color: white;
+    font-weight: bold;
+  }
 </style>

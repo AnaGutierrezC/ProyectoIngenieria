@@ -4,8 +4,7 @@
 
 <div class="content margin-content">
 
-    <h1>Detalles de usuario </h1>
-    <h1>{{$user->name}}</h1>
+    <h1 id="title-tickets">Detalles de usuario <span>{{$user->name}}</span> </h1>
     <table>
         <tr>
             <td class="label-column">Cedula del usuario:</td>
@@ -33,6 +32,11 @@
 </div>
 
 <style>
+     #title-tickets {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: #505458;
+    }
     div {
         margin-bottom: 10px;
     }

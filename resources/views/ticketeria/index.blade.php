@@ -78,6 +78,12 @@
     color: #505458;
   }
 
+  .create-btn:hover {
+    background-color: #A3E6DE;
+    color: white;
+    font-weight: bold;
+  }
+
   .comment-btn:hover {
     background-color: #ea9df2;
     color: white;
