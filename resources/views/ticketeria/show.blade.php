@@ -5,8 +5,7 @@
 
 <div class="content margin-content">
 
-    <h1>Detalles del Ticket </h1>
-    <h1>{{$listaT->ticket}}</h1>
+    <h1 id="title-tickets">Detalles de Ticket {{$listaT->ticket}}</h1>
     <table>
         <tr>
             <td class="label-column">Descripción:</td>
@@ -38,6 +37,11 @@
 </div>
 
 <style>
+     #title-tickets {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: #505458;
+    }
     div {
         margin-bottom: 10px;
     }

@@ -4,7 +4,7 @@
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script> -->
 
 <div class="content margin-content">
-    <h1>
+    <h1 id="title-tickets">
         Asignar ticket
         <a href="/ticketeria"><button class="salir">Salir</button></a>
     </h1>
@@ -75,12 +75,19 @@
                 </select>
             </div>
             <div>
-                <button type="submit">Enviar</button>
+                <button type="submit" class="enviar-btn">Enviar</button>
             </div>
     </form>
 </div>
 <style>
+    #title-tickets {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: #505458;
+    }
+
     form {
+        color: #505458;
         margin-top: 10px;
         justify-content: space-around;
         border: 1px solid black;
@@ -136,12 +143,16 @@
     }
 
     .salir {
-        background-color: #ACE1AF;
         width: 150px;
         height: 40px;
         font-weight: bold;
         margin-left: 89%;
         border-radius: 15px;
+    }
+
+    .salir:hover {
+        background-color: red;
+        color: white;
     }
 
     .usuario {
@@ -164,5 +175,11 @@
     .content-column {
         padding-left: 120px;
         text-align: left;
+    }
+
+    .enviar-btn:hover {
+        background-color: #c19a6b;
+        color: white;
+        font-weight: bold;
     }
 </style>
