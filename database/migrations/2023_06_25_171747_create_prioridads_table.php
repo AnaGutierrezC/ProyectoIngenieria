@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->foreignId('id')->autoIncrement();
-            $table->string('nombre',15);
+        Schema::create('prioridades', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre', 255);
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(roles);
+        Schema::dropIfExists('prioridades');
     }
 };

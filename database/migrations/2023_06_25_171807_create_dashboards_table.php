@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('etiquetas', function (Blueprint $table) {
-            $table->id()->autoIncrement();
-            $table->string('nombre',40);
+        Schema::create('dashboards', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('totalTickets');
+            $table->integer('ticketsPendientes');
+            $table->integer('cantidad_User');
+
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(etiquetas);
+        Schema::dropIfExists('dashboards');
     }
 };

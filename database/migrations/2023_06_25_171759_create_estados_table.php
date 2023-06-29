@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prioridades', function (Blueprint $table) {
-            $table->id()->autoIncrement();
-            $table->string('nombre',40);
+        Schema::create("estados", function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre', 255);
+
             $table->timestamps();
         });
     }
@@ -23,7 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(prioridades);
-
+        Schema::dropIfExists("estados");
     }
 };
